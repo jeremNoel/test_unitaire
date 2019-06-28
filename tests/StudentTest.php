@@ -9,7 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class StudentTest extends TestCase
 {
-    public static function initStudent()
+    /**
+     * @var Student
+     */
+    protected $student;
+
+    public function setUp(): void
     {
         $student = new Student();
         $student->setFirstname("Jeremie");
@@ -17,31 +22,27 @@ class StudentTest extends TestCase
         $student->setEmail("test@test.fr");
         $student->setId(1);
         $student->setRoom(1);
-        return $student;
+        $this->student = $student;
     }
 
     public function testIfStudentHaveFirstname() {
-        $result = self::initStudent();
 
-        $this->assertEquals("Jeremie", $result->getFirstname());
+        $this->assertEquals("Jeremie", $this->student->getFirstname());
     }
 
     public function testIfStudentHaveLastname() {
-        $result = self::initStudent();
 
-        $this->assertEquals("Noel", $result->getLastname());
+        $this->assertEquals("Noel", $this->student->getLastname());
     }
 
     public function testIfStudentHaveEmail() {
-        $result = self::initStudent();
 
-        $this->assertEquals("test@test.fr", $result->getEmail());
+        $this->assertEquals("test@test.fr", $this->student->getEmail());
     }
 
     public function testIfStudentHaveId() {
-        $result = self::initStudent();
 
-        $this->assertEquals(1, $result->getId());
+        $this->assertEquals(1, $this->student->getId());
     }
 
     public function testIfStudentIsNotComplete() {
