@@ -43,7 +43,7 @@ class TeacherTest extends TestCase
 
     public function testTeacherHasStringValidEmail()
     {
-        $this->teacher->setEmail()
+
     }
 
     /*public function testTeacherHasStringNotValidEmail()
