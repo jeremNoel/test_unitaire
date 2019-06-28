@@ -41,6 +41,11 @@ class Teacher
     private $skills;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Room", inversedBy="teachers")
+     */
+    private $room;
+
+    /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
      */
