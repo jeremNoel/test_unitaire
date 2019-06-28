@@ -60,6 +60,29 @@ class Room
     private $updatedAt;
 
     /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $capacity;
+
+
+    public function __construct(String $name, Teacher $teachers, Student $student, int $capacity, \DateTime $startAt, \DateTime $endAt, \DateTime $createdAt, \DateTime $updatedAt)
+    {
+        $this->setName($name);
+        $this->setTeachers($teachers);
+        $this->setStudents($student);
+        $this->setCapacity($capacity);
+        $this->setStartAt($startAt);
+        $this->setEndAt($endAt);
+        $this->setCreatedAt($createdAt);
+        $this->setUpdatedAt($updatedAt);
+    }
+
+    public function isValid(){
+        return $this->teachers->isValid() && $this->students->isValid() && $this->endAt > $this->startAt && count($this->students + 1) <= $this->capacity;
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -75,6 +98,22 @@ class Room
     {
         $this->id = $id;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCapacity(): int
+    {
+        return $this->capacity;
+    }
+
+    /**
+     * @param int $capacity
+     */
+    public function setCapacity(int $capacity): void
+    {
+        $this->capacity = $capacity;
     }
 
     /**
