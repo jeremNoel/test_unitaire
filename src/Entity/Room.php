@@ -30,6 +30,18 @@ class Room
     private $teachers;
 
     /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $startAt;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $endAt;
+
+    /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Student", mappedBy="room")
      */
@@ -116,6 +128,42 @@ class Room
     public function setStudents(ArrayCollection $students): Room
     {
         $this->students = $students;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartAt(): \DateTime
+    {
+        return $this->startAt;
+    }
+
+    /**
+     * @param \DateTime $startAt
+     * @return Room
+     */
+    public function setStartAt(\DateTime $startAt): Room
+    {
+        $this->startAt = $startAt;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getEndAt(): \DateTime
+    {
+        return $this->endAt;
+    }
+
+    /**
+     * @param \DateTime $endAt
+     * @return Room
+     */
+    public function setEndAt(\DateTime $endAt): Room
+    {
+        $this->endAt = $endAt;
         return $this;
     }
 
