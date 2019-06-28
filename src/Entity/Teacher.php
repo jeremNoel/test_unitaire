@@ -57,9 +57,15 @@ class Teacher
      */
     private $updatedAt;
 
-    public function __construct()
+    public function __construct($firstname = '', $lastname = '', $email = '', $skills = [], $room = '')
     {
-        $this->skills = [];
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->$email = $lastname;
+        $this->skills = $skills;
+        if(!empty($room)) {
+            $this->room = $room;
+        }
     }
 
     /**
