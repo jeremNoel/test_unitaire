@@ -5,6 +5,7 @@ namespace App\tests\Units;
 use App\Entity\Student;
 use App\Entity\Room;
 use App\Entity\Teacher;
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class RoomTest extends TestCase
@@ -53,10 +54,13 @@ class RoomTest extends TestCase
         $this->startDate = new DateTime();
         $this->startDate->setDate(2019, 6, 28);
 
+        $created = new DateTime();
+        $created->setDate(2019, 6, 20);
+
         $this->endDate = new DateTime();
         $this->endDate->setDate(2019, 6, 29);
 
-        $this->room = new Room($this->name, $this->teacher, $this->student, $this->capacity_max, $this->startDate, $this->endDate);
+        $this->room = new Room($this->name, [$this->teacher], $this->student, $this->capacity_max, $this->startDate, $this->endDate, $created, $created);
 
     }
 
